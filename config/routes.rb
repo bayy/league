@@ -1,4 +1,9 @@
 League::Application.routes.draw do
+  resources :teams
+
+  resources :clubs, :except => [:new, :edit]
+  resources :teams, :except => [:new, :edit]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
