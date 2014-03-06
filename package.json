@@ -1,6 +1,6 @@
 {
   "author": "Yulin Dong",
-  "name": "Rail/AngularJS Tutorial: League",
+  "name": "League",
   "version": "0.0.1",
   "homepage": "http://localhost:3000/UI/index.html",
   "licenses": {
@@ -28,6 +28,7 @@
     "grunt-contrib-coffee": "~0.7.0",
     "grunt-coffeelint": "0.0.6",
     "grunt-conventional-changelog": "~0.1.1",
-    "grunt-bump": "0.0.6"
+    "grunt-bump": "0.0.6",
+    "astrolabe": "~0.3.3-alpha"
   }
 }
