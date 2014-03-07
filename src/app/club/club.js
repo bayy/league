@@ -44,7 +44,8 @@ angular.module( 'league.club', [
                 {field: 'id', displayName: 'Id'},
                 {field: 'name', displayName: 'Club Name'},
                 {field: 'contact_officer', displayName: 'Contact Officer'},
-                {displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" ng-click="editClub(row.entity)" >Edit</button> '}
+                {displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" ng-click="editClub(row.entity)" >Edit</button> '},
+                {displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn-small" ng-click="deleteClub(row.entity)" >Delete</button> '}
             ],
             multiSelect: false
         };
@@ -55,6 +56,11 @@ angular.module( 'league.club', [
 
         $scope.newClub = function() {
             $state.transitionTo('club');
+        };
+
+        $scope.deleteClub = function(club) {
+            club.$remove();
+            $scope.clubs = ClubRes.query();
         };
     })
     .controller('ClubCtrl', function ClubController( $scope, ClubRes, $state, $stateParams ) {
@@ -87,6 +93,6 @@ angular.module( 'league.club', [
  * Add a resource to allow us to get at the server
  */
     .factory( 'ClubRes', function ( $resource )  {
-        return $resource("../clubs/:id.json", {id:'@id'}, {'update': {method:'PUT'}});
+        return $resource("../clubs/:id.json", {id:'@id'}, {'update': {method:'PUT'}, 'remove': {method: 'DELETE', headers: {'Content-Type': 'application/json'}}});
     })
 ;
