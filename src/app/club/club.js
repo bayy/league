@@ -45,7 +45,8 @@ angular.module( 'league.club', [
                 {field: 'name', displayName: 'Club Name'},
                 {field: 'contact_officer', displayName: 'Contact Officer'},
                 {displayName: 'Edit', cellTemplate: '<button id="editBtn" type="button" ng-click="editClub(row.entity)" >Edit</button> '},
-                {displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn-small" ng-click="deleteClub(row.entity)" >Delete</button> '}
+                {displayName: 'Delete', cellTemplate: '<button id="deleteBtn" type="button" class="btn-small" ng-click="deleteClub(row.entity)" >Delete</button> '},
+                {displayName: 'Show Teams', cellTemplate: '<button id="showBtn" type="button" ng-click="showTeams(row.entity)" >Show Teams</button> '}
             ],
             multiSelect: false
         };
@@ -64,6 +65,10 @@ angular.module( 'league.club', [
             }, function(error) {
                 $scope.error = error.data;
             });
+        };
+
+        $scope.showTeams = function(club) {
+            $state.transitionTo('teams', {clubId: club.id});
         };
     })
     .controller('ClubCtrl', function ClubController( $scope, ClubRes, $state, $stateParams ) {
