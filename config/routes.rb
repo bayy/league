@@ -1,5 +1,6 @@
 League::Application.routes.draw do
-  resources :teams
+  devise_for :users
+  root to: "home#index"
 
   resources :clubs, :except => [:new, :edit]
   resources :teams, :except => [:new, :edit]
