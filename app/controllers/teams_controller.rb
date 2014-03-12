@@ -1,5 +1,7 @@
 class TeamsController < ApplicationController
   before_filter :intercept_html_requests
+  before_filter :authenticate_user!
+
   layout false
   respond_to :json
   before_action :set_team, only: [:show, :edit, :update, :destroy]
